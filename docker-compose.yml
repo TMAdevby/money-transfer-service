@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  transfer-service:
+    build: .
+    container_name: transfer-service
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=docker
+    volumes:
+      - ./logs:/app/logs
+    networks:
+      - transfer-net
+
+networks:
+  transfer-net:
+    driver: bridge
